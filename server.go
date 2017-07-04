@@ -1,4 +1,4 @@
-package app
+package main
 
 import (
 	"net/http"
@@ -18,7 +18,7 @@ type Server struct {
 }
 
 // New makes a new Server.
-func New(assets string, tweetReader *twitterfeed.TweetReader, textbox *textbox.Client) *Server {
+func NewServer(assets string, tweetReader *twitterfeed.TweetReader, textbox *textbox.Client) *Server {
 	srv := &Server{
 		assets:      assets,
 		tweetReader: tweetReader,

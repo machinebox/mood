@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/machinebox/mood/app"
 	"github.com/machinebox/sdk-go/textbox"
 	"github.com/machinebox/twitterfeed"
 )
@@ -32,7 +31,7 @@ func main() {
 	fmt.Println(`mood by Machine Box - https://machinebox.io/
 `)
 	fmt.Println("Go to:", *addr+"...")
-	srv := app.New("./app/assets", tweetReader, textbox)
+	srv := NewServer("./assets", tweetReader, textbox)
 	if err := http.ListenAndServe(*addr, srv); err != nil {
 		log.Fatalln(err)
 	}
