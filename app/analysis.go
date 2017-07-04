@@ -7,9 +7,10 @@ import (
 	"sync"
 	"time"
 
+	"context"
+
 	"github.com/gorilla/websocket"
-	"github.com/machinebox/mb/x/tools/mood/textboxtally"
-	"golang.org/x/net/context"
+	"github.com/machinebox/mood/textboxtally"
 )
 
 const (
@@ -35,11 +36,11 @@ type tallyData struct {
 	TopEntities      map[string][]textboxtally.Entity `json:"top_entities"`
 }
 
-func (s *Server) handleAnalysis(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
+func (s *Server) handleAnalysis(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
 	socket, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Fatal("upgrader.Upgrade:", err)
-		return err
 	}
 
 	var talliesLock sync.RWMutex
@@ -157,11 +158,11 @@ func (s *Server) handleAnalysis(ctx context.Context, w http.ResponseWriter, r *h
 			if err := socket.WriteJSON(res); err != nil {
 				if err == websocket.ErrCloseSent {
 					socketLock.Unlock()
-					return nil
+					return
 				}
 				log.Println("WriteJSON:", err)
 				socketLock.Unlock()
-				return nil
+				return
 			}
 			socketLock.Unlock()
 		}

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/machinebox/mb/x/tools/mood/app"
+	"github.com/machinebox/mood/app"
 	"github.com/machinebox/sdk-go/textbox"
 	"github.com/machinebox/twitterfeed"
 )
