@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<title>mood by Machine Box</title>
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css'>
+		<style>
+			.main.logo {
+				width: 250px;
+			}
+			.remove.button {
+				color: #888;
+			}
+			.icon.image {
+				width: 15px;
+				height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class='ui container'>
+			<div class='ui header stackable grid'>
+				<div class='center aligned column'>
+					<div class='ui large secondary top menu'>
+						<a class='item' href='/'>
+							mood by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<img class='ui main logo' src='/assets/machineboxlogo.svg'>
+						</a>
+						<div class='right menu'>
+							<a class='item'>
+								<a class='item' target='_blank' href='https://machinebox.io/docs/textbox'>
+									<img class='icon image' src='/assets/machina.svg' />
+									Learn more about Textbox
+								</a>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='ui divider'></div>
+		<div class='ui container'>
+			<div class='ui error message' style='display:none'></div>
+			<div class='ui divided term grid'>
+				<div class='four wide empty column'>
+					<div class='ui huge fluid input'>
+						<input id='add-button' type='text' placeholder='+ Add term'>
+					</div>
+					<div class='ui basic segment'>
+						Add a term and hit enter.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id='term-template' class='four wide column' style='display:none;'>
+			<form class='ui term form'>
+				<a href='#' class="remove button" style='float:right'>
+					<i class='close icon'></i>
+				</a>
+				<div class='ui huge fluid input'>
+					<input name='term' type='text' placeholder='Enter search term'>
+				</div>
+				<div class='details' style='display:none'>
+					<div class='ui vertical segment'>
+						<div class='ui mini statistic'>
+							<div class='value'><span data-content='count'>0</span></div>
+							<div class='label'>Tweets</div>
+						</div>
+						<div class='ui mini statistic'>
+							<div class='value'><span data-content='sentiment-overview'>-</span></div>
+							<div class='label'>Sentiment</div>
+						</div>
+					</div>
+					<div class='ui vertical segment'>
+						<h3>
+							Keywords
+						</h3>
+						<ol class='ui keywords list'></ol>
+					</div>
+					<div class='ui vertical segment'>
+						<h3>
+							Sentiment
+						</h3>
+						<div data-content='sentiment'></div>
+					</div>
+					<div class='ui vertical segment'>
+						<h3>
+							Entities
+						</h3>
+						<div data-content='entities'></div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
+		<script src='/assets/app.js'></script>
+	</body>
+</html>
